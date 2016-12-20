@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">我的APP</string>
+    <string name="add">增加</string>
+    <string name="redice">减少</string>
+    <string name="resume">重置</string>
+    <string name="title_activity_index">IndexActivity</string>
+    <string name="pickCar">取车网点</string>
+    <string name="sendCar">送车上门</string>
+    <string name="number">￥%1$.2f</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTitleView">
+        <attr name="textText" format="string"/>
+        <attr name="textcolor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SettingAttr">
+        <attr name="label" format="reference|string" />
+        <attr name="drawIcon" format="reference" />
+        <attr name="fi_value" format="reference|string" />
+        <attr name="fi_value_color" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="arc_test_view">
+        <attr name="firstColor" format="reference|color"/>
+        <attr name="secendColor" format="reference|color"/>
+        <attr name="radius" format="reference|dimension"/>
+        <attr name="speed" format="integer"/>
+        <attr name="mTextSize" format="reference|dimension"/>
+    </declare-styleable>
+</resources>
