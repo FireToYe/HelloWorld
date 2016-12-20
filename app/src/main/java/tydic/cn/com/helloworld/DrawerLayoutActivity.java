@@ -1,5 +1,10 @@
 package tydic.cn.com.helloworld;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +25,7 @@ public class DrawerLayoutActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private TextView textView;
     ActionBarDrawerToggle toggle;
-    private Button btn;
+    private Button btn,sendNoti;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +39,33 @@ public class DrawerLayoutActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.activity_drawer_layout);
         listView.setAdapter(adapter);
         btn =(Button)findViewById(R.id.btn_openDraw);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.openDrawer(Gravity.LEFT);
-            }
+        sendNoti = (Button)findViewById(R.id.btn_send_noti);
+        sendNoti.setOnClickListener(v -> {
+           // Notification notification  = new Notification();
+            Notification.Builder builder = new Notification.Builder(this);
+
+//            notification.icon = R.drawable.image1;
+//            notification.tickerText ="Hello World";
+//            notification.when = System.currentTimeMillis();
+//            notification.flags = Notification.FLAG_AUTO_CANCEL;
+            builder.setContentInfo("补充内容");
+            builder.setContentText("主内容区");
+            builder.setContentTitle("通知标题");
+            builder.setSmallIcon(R.drawable.image1);
+            builder.setTicker("新消息");
+            builder.setAutoCancel(true);
+            builder.setWhen(System.currentTimeMillis());
+            Intent intent = new Intent(DrawerLayoutActivity.this,IndexActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            builder.setContentIntent(pendingIntent);
+            builder.setAutoCancel(true);
+            Notification notification = builder.build();
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.notify(1, notification);
         });
+        btn.setOnClickListener(v -> mDrawerLayout.openDrawer(Gravity.LEFT));
         textView = (TextView)findViewById(R.id.tv_msg);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                textView.setText(lvTitle[position]);
-            }
-        });
+        listView.setOnItemClickListener((parent, view, position, id) -> textView.setText(lvTitle[position]));
         mDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
