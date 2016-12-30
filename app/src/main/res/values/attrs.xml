@@ -20,4 +20,15 @@
         <attr name="speed" format="integer"/>
         <attr name="mTextSize" format="reference|dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="seven_view">
+        <attr name="first" format="integer"></attr>
+        <attr name="secend" format="integer"></attr>
+        <attr name="third" format="integer"></attr>
+        <attr name="fourth" format="integer"></attr>
+        <attr name="fifth" format="integer"></attr>
+        <attr name="sixth" format="integer"></attr>
+        <attr name="seventh" format="integer"></attr>
+
+    </declare-styleable>
 </resources>

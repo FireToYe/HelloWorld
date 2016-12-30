@@ -74,7 +74,9 @@
 
         <activity android:name=".ViewPagerActivity" />
         <activity android:name=".DrawerLayoutActivity" />
-        <activity android:name=".MoveDeleteActivity"></activity>
+        <activity android:name=".MoveDeleteActivity" />
+        <activity android:name=".SevenViewActivity"></activity>
+        <activity android:name=".DemoActivity" />
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -34,19 +36,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import tydic.cn.com.ApCallBackListener;
 import tydic.cn.com.CountView;
+import tydic.cn.com.UserBiz.UserBiz;
+import tydic.cn.com.bena.BaseEntity;
+import tydic.cn.com.bena.UserInfoEntity;
 import tydic.cn.com.db.DBManager;
 import android.app.Dialog;
 import android.support.v7.app.AlertDialog;
+
+import org.w3c.dom.Text;
+
 import tydic.cn.com.helloworld.R;
+import tydic.cn.com.view.BadgeView;
+import tydic.cn.com.view.SevenView;
 
 public class MainActivity extends Activity {
 
     private DBManager manager;
     private ListView listView;
+    private TextView tvShow;
+    BadgeView badge;
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
+            if (msg.what==0x123){
+   //             tvShow.setText(msg.obj.toString());
+            }
             super.handleMessage(msg);
         }
     };
@@ -58,9 +74,28 @@ public class MainActivity extends Activity {
         listView = (ListView) findViewById(R.id.listView);
         //初始化DBManager
         manager = new DBManager(this);
-        CountView cvTest = (CountView)findViewById(R.id.cv_test);
+        tvShow = (TextView) findViewById(R.id.tv_show);
+        CountView cvTest = (CountView) findViewById(R.id.cv_test);
         cvTest.showNumberWithAnimation(2000.00f);
-
+        ImageView target= (ImageView )findViewById(R.id.iv_badge);
+        target.setOnClickListener(v -> {
+            Intent intent = new Intent(this,DemoActivity.class);
+            startActivity(intent);
+        });
+        badge = new BadgeView(this, target);
+        badge.setText("OK");
+        badge.show();
+        UserBiz userbize = new UserBiz();
+            userbize.getList("15084890539", "2251022057731868917119086224872421513662", new ApCallBackListener<BaseEntity<UserInfoEntity>>() {
+                @Override
+                public void onSuccess(BaseEntity<UserInfoEntity> userInfoEntityBaseEntity) {
+                    UserInfoEntity userInfo = userInfoEntityBaseEntity.getResult();
+                    Message message = new Message();
+                    message.what=0x123;
+                    message.obj =userInfo;
+                    handler.sendMessage(message);
+                }
+            });
     }
 
     @Override
@@ -111,7 +146,7 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
     public void drawerLayout(View view){
-        Intent intent =new Intent(this,DrawerLayoutActivity.class);
+        Intent intent =new Intent(this,SevenViewActivity.class);
         startActivity(intent);
     }
 
@@ -162,4 +197,6 @@ public class MainActivity extends Activity {
             }
         },60000);
     }
+
+
 }
