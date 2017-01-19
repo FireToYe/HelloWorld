@@ -60,7 +60,7 @@ public class ArcTestView extends View{
                         }
                     }
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(speed);
                         postInvalidate();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -77,8 +77,8 @@ public class ArcTestView extends View{
         int radius =center-arcWidth/2;
         //mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(arcWidth);
-        mPaint.setAntiAlias(true);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setAntiAlias(true);//去锯齿
+        mPaint.setStyle(Paint.Style.STROKE);//空心
         mPaint.setColor(secendColor);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         RectF rectF = new RectF(center-radius,center-radius,center+radius,center+radius);

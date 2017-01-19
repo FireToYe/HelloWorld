@@ -45,6 +45,12 @@
         android:layout_height="wrap_content"
         android:onClick="drawerLayout"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="listView测试"
+        android:onClick="goListView"
+        />
     <tydic.cn.com.CountView
         android:id="@+id/cv_test"
         android:layout_width="match_parent"
@@ -53,12 +59,10 @@
         android:id="@+id/tv_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/iv_badge"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-        android:scaleType="fitXY"
-            android:src="@drawable/image1" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/open_close"/>
     <ListView
         android:id="@+id/listView"
         android:layout_width="fill_parent"

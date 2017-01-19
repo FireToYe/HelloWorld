@@ -25,7 +25,7 @@ import tydic.cn.com.view.BadgeView;
 public class DemoActivity extends TabActivity {
 
 	private static final String[] DATA = getStrings();
-
+	
 	Button btnPosition;
 	Button btnColour;
 	Button btnAnim1;

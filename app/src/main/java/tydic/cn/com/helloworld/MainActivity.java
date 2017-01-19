@@ -77,14 +77,14 @@ public class MainActivity extends Activity {
         tvShow = (TextView) findViewById(R.id.tv_show);
         CountView cvTest = (CountView) findViewById(R.id.cv_test);
         cvTest.showNumberWithAnimation(2000.00f);
-        ImageView target= (ImageView )findViewById(R.id.iv_badge);
-        target.setOnClickListener(v -> {
-            Intent intent = new Intent(this,DemoActivity.class);
-            startActivity(intent);
-        });
-        badge = new BadgeView(this, target);
-        badge.setText("OK");
-        badge.show();
+//        ImageView target= (ImageView )findViewById(R.id.iv_badge);
+//        target.setOnClickListener(v -> {
+//            Intent intent = new Intent(this,DemoActivity.class);
+//            startActivity(intent);
+//        });
+//        badge = new BadgeView(this, target);
+//        badge.setText("OK");
+//        badge.show();
         UserBiz userbize = new UserBiz();
             userbize.getList("15084890539", "2251022057731868917119086224872421513662", new ApCallBackListener<BaseEntity<UserInfoEntity>>() {
                 @Override
@@ -104,7 +104,7 @@ public class MainActivity extends Activity {
         manager.closeDB();
     }
     public void goSendMessenger(View view){
-        Intent intent =new Intent(this,SocketActivity.class);
+        Intent intent =new Intent(this,AlarmActivity.class);
         startActivity(intent);
     }
     public void goGetPost(View view){
@@ -146,7 +146,11 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
     public void drawerLayout(View view){
-        Intent intent =new Intent(this,SevenViewActivity.class);
+        Intent intent =new Intent(this,ImageLoaderActivity.class);
+        startActivity(intent);
+    }
+    public void goListView(View view){
+        Intent intent =new Intent(this,ImageActivity.class);
         startActivity(intent);
     }
 
